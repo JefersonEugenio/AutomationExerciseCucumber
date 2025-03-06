@@ -9,25 +9,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class DriverFactory {
-    public static boolean isHeadless;
 
     public static WebDriver getBrowser(Drivers tipo) {
-
-        String headless = System.getProperty("headless", "false").toLowerCase();
-        if (headless.equals("true") || headless.equals("false")) {
-            isHeadless = Boolean.parseBoolean(headless);}
-        else {
-            throw new IllegalArgumentException("O parâmetro 'headless' aceita apenas valores booleanos: true ou false.");
-        }
 
         switch (tipo) {
             case CHROME:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--start-maximized");
-                if (isHeadless) {
-                    options.addArguments("--headless");
-                }
                 return new ChromeDriver(options);
             case FIREFOX:
                 WebDriverManager.firefoxdriver().setup();
