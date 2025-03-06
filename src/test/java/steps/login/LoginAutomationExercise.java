@@ -1,5 +1,6 @@
 package steps.login;
 
+import com.aventstack.extentreports.Status;
 import framework.webDrivers.DriverManager;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -8,12 +9,15 @@ import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static framework.tools.Report.extentTest;
+
 public class LoginAutomationExercise {
 
     WebDriver driver = DriverManager.getDriver();
 
     @Dado("que o usuario esta na pagina de login do sistema Automation Exercise")
     public void queOUsuarioEstaNaPaginaDeLoginDoSistemaAutomationExercise() {
+        extentTest.log(Status.INFO, "A tela está página de login do sistema Automation Exercise");
     }
 
     @Quando("o usuario preenche o campo email com {string}")
