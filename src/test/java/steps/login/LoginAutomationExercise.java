@@ -28,10 +28,12 @@ public class LoginAutomationExercise {
 
     @E("o usuario clica no botao login")
     public void oUsuarioClicaNoBotaoLogin() {
+        driver.findElement(By.cssSelector(".login-form .btn-default")).click();
     }
 
     @Então("o sistema autentica o usuario")
-    public void oSistemaAutenticaOUsuario() {
+    public void oSistemaAutenticaOUsuario() throws InterruptedException {
+        Thread.sleep(2000);
     }
 
     @E("redireciona para a tela principal")
