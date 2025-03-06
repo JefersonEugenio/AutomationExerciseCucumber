@@ -27,5 +27,5 @@ jobs:
       run: mvn install -DskipTests=true
 
     - name: Run Tests
-      run: mvn test
+      run: mvn test -X -Dheadless=true
 
