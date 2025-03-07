@@ -6,6 +6,7 @@ import framework.webDrivers.DriverManager;
 import framework.webDrivers.Drivers;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 
 import static framework.tools.Report.extentTest;
 import static framework.webDrivers.DriverFactory.getBrowser;
@@ -13,9 +14,14 @@ import static framework.webDrivers.DriverFactory.getBrowser;
 public class Hooks {
 
     @Before
-    public void setUp() {
-        Report.configurarExtentReport();
-        Report.createTest("Automation Exercise com Cucumber");
+    public void setUp(Scenario scenario) {
+        String featureName = scenario.getUri().getPath();
+        String scnarioName = scenario.getName();
+
+        featureName = featureName.substring(featureName.lastIndexOf("/") + 1).replace(".feature", "");
+
+        Report.configurarExtentReport(featureName, scnarioName);
+        Report.createTest("Cenario: " + scnarioName);
         extentTest.log(Status.INFO, "Iniciado de teste");
         DriverManager.setDriver(getBrowser(Drivers.CHROME));
         DriverManager.getDriver().get("https://automationexercise.com/login");
