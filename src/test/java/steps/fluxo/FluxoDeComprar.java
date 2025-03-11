@@ -1,7 +1,6 @@
 package steps.fluxo;
 
 import com.aventstack.extentreports.Status;
-import framework.supports.Wait;
 import framework.webDrivers.DriverManager;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -19,7 +18,6 @@ import static framework.tools.Report.extentTest;
 public class FluxoDeComprar {
 
     WebDriver driver = DriverManager.getDriver();
-    Wait wait;
 
     @Dado("que o usuario esta na pagina de principal do sistema Automation Exercise")
     public void queOUsuarioEstaNaPaginaDePrincipalDoSistemaAutomationExercise() {
