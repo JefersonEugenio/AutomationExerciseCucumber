@@ -1,6 +1,7 @@
 package steps.fluxo;
 
 import com.aventstack.extentreports.Status;
+import framework.utils.ProdutoProperties;
 import framework.webDrivers.DriverManager;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -54,12 +55,18 @@ public class FluxoDeComprar {
     }
 
     @E("o usuario escolhe o produto {string} e clica no botao Add to cart")
-    public void oUsuarioEscolheOProdutoEClicaNoBotaoAddToCart(String valor) {
+    public void oUsuarioEscolheOProdutoEClicaNoBotaoAddToCart(String produto) {
         List<WebElement> elementos = driver.findElements(By.cssSelector("div > div.single-products > div.productinfo > p"));
         for (WebElement elemento : elementos) {
             String texto = elemento.getText();
-            if (texto.contains(valor)) {
-                extentTest.log(Status.INFO, "O usuario escolheu o produto: " + valor);
+            WebElement precos = elemento.findElement(By.xpath("./preceding-sibling::h2"));
+            String preco = precos.getText();
+            if (texto.contains(produto)) {
+                ProdutoProperties.salvarProduto(texto, preco);
+                System.out.println("---");
+                String returnar = ProdutoProperties.obterProdutoRetorno();
+                System.out.println(returnar);
+                extentTest.log(Status.INFO, "O usuario escolheu: " + returnar);
                 WebElement botao = elemento.findElement(By.xpath("./following-sibling::a"));
                 botao.click();
                 extentTest.log(Status.INFO, "Clica no botão 'Add to Cart'");
