@@ -8,6 +8,7 @@ import framework.utils.CreateFolder;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Report {
 
@@ -21,7 +22,7 @@ public class Report {
     public static ExtentReports extentReports;
     public static ExtentTest extentTest;
 
-    public static void configurarExtentReport(String folder, String cenario) {
+    public static void configurarExtentReport(String folder, String cenario) throws IOException {
         CreateFolder.createDirectory(CAMINHO_REPORT + File.separator + folder);
 
         sparkReporter = new ExtentSparkReporter(CAMINHO_REPORT + File.separator + folder + File.separator + cenario + ".html");

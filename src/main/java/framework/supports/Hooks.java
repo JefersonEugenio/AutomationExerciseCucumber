@@ -10,6 +10,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
 import java.io.File;
+import java.io.IOException;
 
 import static framework.tools.Report.extentTest;
 import static framework.webDrivers.DriverFactory.getBrowser;
@@ -20,7 +21,7 @@ public class Hooks {
             + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties";
 
     @Before
-    public void setUp(Scenario scenario) {
+    public void setUp(Scenario scenario) throws IOException {
 
         CreateFolder.createDirectory(CAMINHO_RESOURCES);
         String featureName = scenario.getUri().getPath();

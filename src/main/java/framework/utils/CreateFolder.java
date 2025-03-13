@@ -22,11 +22,13 @@ public class CreateFolder {
         Files.delete(file.toPath());
     }
 
-    public static void createDirectory(String path){
+    public static void createDirectory(String path) throws IOException {
         File directory = new File(path);
         if (!directory.exists()) {
             directory.mkdir();
-            System.out.println("A pasta foi criada!");
+        } else {
+            deleteDirectoryRecursively(new File(path));
+            createDirectory(path);
         }
     }
 
