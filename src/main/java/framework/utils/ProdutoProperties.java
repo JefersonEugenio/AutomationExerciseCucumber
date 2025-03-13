@@ -23,17 +23,6 @@ public class ProdutoProperties {
         }
     }
 
-    public static void obterProduto() {
-        Properties prop = new Properties();
-        try (FileInputStream in = new FileInputStream(CAMINHO_RESOURCES)) {
-            prop.load(in);
-            System.out.println("Nome: " + prop.getProperty("produto.nome"));
-            System.out.println("Preço: " + prop.getProperty("produto.preco"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static String obterProdutoRetorno() {
         Properties prop = new Properties();
         try (FileInputStream in = new FileInputStream(CAMINHO_RESOURCES)) {
