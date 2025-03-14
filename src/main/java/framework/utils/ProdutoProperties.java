@@ -1,9 +1,6 @@
 package framework.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class ProdutoProperties {
@@ -12,22 +9,31 @@ public class ProdutoProperties {
             "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties"
             + File.separator + "produto.properties";
 
-    public static void salvarProduto(String nome, String preco) {
+    public static void salvarProduto(String chave, String valor) {
         Properties prop = new Properties();
+
+        try (FileInputStream in = new FileInputStream(CAMINHO_RESOURCES)) {
+            prop.load(in);
+        } catch (FileNotFoundException e) {
+            // Se o arquivo ainda não existe, não há problema (será criado depois)
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        prop.setProperty(chave, valor);
+
         try (FileOutputStream out = new FileOutputStream(CAMINHO_RESOURCES)) {
-            prop.setProperty("produto.nome", nome);
-            prop.setProperty("produto.preco", preco);
             prop.store(out, "Dados do Produto");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static String obterProdutoRetorno() {
+    public static String obterProdutoRetorno(String chave) {
         Properties prop = new Properties();
         try (FileInputStream in = new FileInputStream(CAMINHO_RESOURCES)) {
             prop.load(in);
-            return "Nome do produto: " + prop.getProperty("produto.nome") + ", preço do produto: " + prop.getProperty("produto.preco");
+            return prop.getProperty(chave);
         } catch (IOException e) {
             e.printStackTrace();
         }
