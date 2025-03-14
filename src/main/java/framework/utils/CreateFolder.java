@@ -7,9 +7,6 @@ import java.nio.file.Files;
 
 public class CreateFolder {
 
-    private static final String CAMINHO_RESOURCES = System.getProperty("user.dir") + File.separator +
-            "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties" + File.separator;
-
     public static void deleteDirectoryRecursively(File file) throws IOException {
         if (file.isDirectory()) {
             File[] entries = file.listFiles();
