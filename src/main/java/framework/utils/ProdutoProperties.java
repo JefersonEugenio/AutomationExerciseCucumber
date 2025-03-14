@@ -15,7 +15,8 @@ public class ProdutoProperties {
 
         if (!arquivo.exists()) {
             try {
-                arquivo.createNewFile();
+                if (arquivo.createNewFile()) {
+                }
             } catch (IOException e) {
                 System.err.println("Erro ao criar o arquivo de propriedades: " + e.getMessage());
                 return;
