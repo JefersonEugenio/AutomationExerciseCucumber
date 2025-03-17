@@ -14,6 +14,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -65,8 +66,8 @@ public class FluxoDeComprar {
             WebElement precos = elemento.findElement(By.xpath("./preceding-sibling::h2"));
             String produtoPreco = precos.getText();
             if (produtoNome.contains(produto)) {
-                ProdutoProperties.salvarProduto("produto.nome", produtoNome);
-                ProdutoProperties.salvarProduto("produto.preco", produtoPreco);
+                ProdutoProperties.salvarProduto("Nome.Produto: " + produtoNome);
+                ProdutoProperties.salvarProduto("Preco.Produto: " + produtoPreco);
                 extentTest.log(Status.INFO, "O usuario escolheu o produto: " + produtoNome + " " + produtoPreco);
                 WebElement botao = elemento.findElement(By.xpath("./following-sibling::a"));
                 botao.click();
@@ -92,7 +93,7 @@ public class FluxoDeComprar {
     @E("Validacao nome do produto")
     public void validacaoNomeDoProduto() {
         String nomeProduto = driver.findElement(By.cssSelector("#product-1 h4 a")).getText();
-        String nomeProdutoCliente = ProdutoProperties.obterProdutoRetorno("produto.nome");
+        String nomeProdutoCliente = ProdutoProperties.obterProdutoRetorno("Nome.Produto");
         Assertions.assertEquals(nomeProduto, nomeProdutoCliente);
         extentTest.log(Status.PASS, "O usuário selecionou o produto corretamente, e o nome exibido no carrinho corresponde ao esperado");
     }
@@ -100,7 +101,7 @@ public class FluxoDeComprar {
     @E("Validacao preco do produto")
     public void validacaoPrecoDoProduto() {
         String nomePreco = driver.findElement(By.cssSelector("#product-1 .cart_price p")).getText();
-        String nomePrecoCliente = ProdutoProperties.obterProdutoRetorno("produto.preco");
+        String nomePrecoCliente = ProdutoProperties.obterProdutoRetorno("Preco.Produto");
         Assertions.assertEquals(nomePreco, nomePrecoCliente);
         extentTest.log(Status.PASS, "O usuário selecionou o produto corretamente, e o preço exibido no carrinho corresponde ao esperado");
     }
@@ -108,16 +109,16 @@ public class FluxoDeComprar {
     @E("Validacao quantidade do produto")
     public void validacaoQuantidadeDoProduto() {
         String quantidadeProduto = driver.findElement(By.cssSelector("#product-1 .cart_quantity button")).getText();
-        ProdutoProperties.salvarProduto("produto.quantidade", quantidadeProduto);
+        ProdutoProperties.salvarProduto("Quantidade.Produto: " + quantidadeProduto);
         extentTest.log(Status.INFO, "Quantidade do produto no carrinho: " + quantidadeProduto);
     }
 
     @E("Validacao total do produto")
     public void validacaoTotalDoProduto() throws IllegalAccessException {
-        String strPreco = ProdutoProperties.obterProdutoRetorno("produto.preco");
+        String strPreco = ProdutoProperties.obterProdutoRetorno("Preco.Produto");
         strPreco = strPreco.replaceAll("[^0-9]", "");
         int intPreco = Integer.parseInt(strPreco);
-        String strQty = ProdutoProperties.obterProdutoRetorno("produto.quantidade");
+        String strQty = ProdutoProperties.obterProdutoRetorno("Quantidade.Produto");
         int intQty = Integer.parseInt(strQty);
         int total = intPreco*intQty;
         String totalPreco = driver.findElement(By.cssSelector("#product-1 .cart_total p")).getText();
