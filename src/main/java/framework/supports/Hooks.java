@@ -2,12 +2,14 @@ package framework.supports;
 
 import com.aventstack.extentreports.Status;
 import framework.tools.Report;
+import framework.utils.CreateFolder;
 import framework.webDrivers.DriverManager;
 import framework.webDrivers.Drivers;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
+import java.io.File;
 import java.io.IOException;
 
 import static framework.tools.Report.extentTest;
@@ -17,7 +19,7 @@ public class Hooks {
 
     @Before
     public void setUp(Scenario scenario) throws IOException {
-
+        CreateFolder.createFolder("main", "properties");
         String featureName = scenario.getUri().getPath();
         String scnarioName = scenario.getName();
 
