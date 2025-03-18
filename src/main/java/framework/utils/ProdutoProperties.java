@@ -6,7 +6,7 @@ import java.util.Properties;
 public class ProdutoProperties {
 
     private static final String CAMINHO_ARQUIVO = System.getProperty("user.dir") + File.separator +
-            "src" + File.separator + "main" + File.separator + "resources" + File.separator + "Produtos.properties";
+            "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties" + File.separator + "Produtos.properties";
 
     public static void salvarProduto(String chave, String valor) {
         Properties prop = new Properties();
