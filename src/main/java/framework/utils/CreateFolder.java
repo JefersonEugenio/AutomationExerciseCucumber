@@ -8,18 +8,6 @@ import java.nio.file.Paths;
 
 public class CreateFolder {
 
-    public static void deleteDirectoryRecursively(File file) throws IOException {
-        if (file.isDirectory()) {
-            File[] entries = file.listFiles();
-            if (entries != null) {
-                for (File entry : entries) {
-                    deleteDirectoryRecursively(entry);
-                }
-            }
-        }
-        Files.delete(file.toPath());
-    }
-
     private static final String BASE_DIR = "src";
 
     private static Path buildPath(String directory, String folderName) {
@@ -33,18 +21,6 @@ public class CreateFolder {
             Files.createDirectories(folderPath);
         } catch (IOException e) {
             System.out.println("Erro ao criar a pasta '" + folderPath + "': " + e.getMessage());
-        }
-    }
-
-
-
-    public static void createDirectory(String path) throws IOException {
-        File directory = new File(path);
-        if (!directory.exists()) {
-            directory.mkdir();
-        } else {
-            deleteDirectoryRecursively(new File(path));
-            createDirectory(path);
         }
     }
 
