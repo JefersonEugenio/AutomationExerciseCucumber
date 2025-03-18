@@ -7,7 +7,7 @@ public class ProdutoProperties {
 
     private static final String CAMINHO_ARQUIVO = System.getProperty("user.dir") + File.separator +
             "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties"
-            + File.separator + "produto.properties";
+            + File.separator + "Produtos.txt";
 
     public static void salvarProduto(String valor) {
         try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO, true)) {
