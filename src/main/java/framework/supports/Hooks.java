@@ -17,13 +17,9 @@ import static framework.webDrivers.DriverFactory.getBrowser;
 
 public class Hooks {
 
-    private static final String CAMINHO_RESOURCES = System.getProperty("user.dir") + File.separator
-            + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "properties";
-
     @Before
     public void setUp(Scenario scenario) throws IOException {
-
-        CreateFolder.createDirectory(CAMINHO_RESOURCES);
+        CreateFolder.createFolder("main", "properties");
         String featureName = scenario.getUri().getPath();
         String scnarioName = scenario.getName();
 
