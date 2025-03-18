@@ -93,8 +93,6 @@ public class FluxoDeComprar {
     public void validacaoNomeDoProduto() {
         String nomeProduto = driver.findElement(By.cssSelector("#product-1 h4 a")).getText();
         String nomeProdutoCliente = ProdutoProperties.obterProdutoRetorno("Nome.Produto");
-        System.out.println("Web: " + nomeProduto);
-        System.out.println("Salva: " + nomeProdutoCliente);
         Assertions.assertEquals(nomeProduto, nomeProdutoCliente);
         extentTest.log(Status.PASS, "O usuário selecionou o produto corretamente, e o nome exibido no carrinho corresponde ao esperado");
     }
