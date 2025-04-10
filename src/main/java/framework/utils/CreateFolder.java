@@ -43,9 +43,6 @@ public class CreateFolder {
         File directory = new File(path);
         if (!directory.exists()) {
             directory.mkdir();
-        } else {
-            deleteDirectoryRecursively(new File(path));
-            createDirectory(path);
         }
     }
 
