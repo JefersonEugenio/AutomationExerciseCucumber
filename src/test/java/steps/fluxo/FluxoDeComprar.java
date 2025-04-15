@@ -174,7 +174,7 @@ public class FluxoDeComprar {
     public void oSistemaExibeAMensagem(String mensagem) throws IllegalAccessException {
         String mensagemWeb = driver.findElement(By.cssSelector("#form b")).getText();
         Assertions.assertEquals(mensagem, mensagemWeb);
-        extentTest.log(Status.PASS, "Sua compra foi realizada com sucesso", Screenshot.screenshotBase64(driver));
+        extentTest.log(Status.PASS, "Operação concluída com sucesso", Screenshot.screenshotBase64(driver));
     }
 
     @E("o usuario clica no botao Continue")
