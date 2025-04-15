@@ -1,6 +1,7 @@
 package steps.login;
 
 import com.aventstack.extentreports.Status;
+import framework.supports.Fakers;
 import framework.tools.Screenshot;
 import framework.webDrivers.DriverManager;
 import io.cucumber.java.pt.Dado;
@@ -19,6 +20,7 @@ import static framework.tools.Report.extentTest;
 public class LoginAutomationExercise {
 
     WebDriver driver = DriverManager.getDriver();
+    Fakers fakers = new Fakers();
 
     @Dado("que o usuario esta na pagina de login do sistema Automation Exercise")
     public void queOUsuarioEstaNaPaginaDeLoginDoSistemaAutomationExercise() {
@@ -32,28 +34,11 @@ public class LoginAutomationExercise {
         extentTest.log(Status.INFO, "O usuario preencheu o campo email");
     }
 
-    @E("localizar a seção New User Signup e o usuario preenche o campo email com {string}")
-    public void localizarASeçãoNewUserSignupEOUsuarioPreencheOCampoEmailCom(String valor) {
+    @E("localizar a seção New User Signup e o usuario preenche o campo email com aleatório")
+    public void localizarASeçãoNewUserSignupEOUsuarioPreencheOCampoEmailCom() {
         List<WebElement> emails = driver.findElements(By.cssSelector("#form .container .row input[name=email]"));
-        emails.get(1).sendKeys(valor);
+        emails.get(1).sendKeys(fakers.getEmail());
         extentTest.log(Status.INFO, "O usuario preencheu o campo email");
-    }
-
-    @E("o usuario preenche o campo password com {string}")
-    public void oUsuarioPreencheOCampoPasswordCom(String valor) {
-        driver.findElement(By.name("password")).sendKeys(valor);
-        extentTest.log(Status.INFO, "O usuario preencheu o campo senha");
-    }
-
-    @E("o usuario clica no botao login")
-    public void oUsuarioClicaNoBotaoLogin() {
-        driver.findElement(By.cssSelector(".login-form .btn-default")).click();
-        extentTest.log(Status.INFO, "O usuario clicou no botão login");
-    }
-
-    @Então("o sistema autentica o usuario")
-    public void oSistemaAutenticaOUsuario() throws InterruptedException {
-        Thread.sleep(2000);
     }
 
     @E("redireciona para a tela principal")
@@ -74,13 +59,6 @@ public class LoginAutomationExercise {
     @Então("o sistema exibe a mensagem Preenche este campo")
     public void oSistemaExibeAMensagemPreencheEsteCampo() throws IllegalAccessException {
         extentTest.log(Status.PASS, "O sistema exibir mensagem no campo que 'Preenche este campo.'", Screenshot.screenshotBase64(driver));
-    }
-
-    @Então("o sistema exibe a mensagem {string}")
-    public void oSistemaExibeAMensagem(String mensagem) throws IllegalAccessException {
-        String mensagemWeb = driver.findElement(By.cssSelector("#form b")).getText();
-        Assertions.assertEquals(mensagem, mensagemWeb);
-        extentTest.log(Status.PASS, "Sua compra foi realizada com sucesso", Screenshot.screenshotBase64(driver));
     }
 
     @Quando("o usuario preenche o campo nome com {string}")
