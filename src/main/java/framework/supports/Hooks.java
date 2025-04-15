@@ -29,7 +29,7 @@ public class Hooks {
         Report.createTest("Cenario: " + scnarioName);
         extentTest.log(Status.INFO, "Iniciado de teste");
         DriverManager.setDriver(getBrowser(Drivers.CHROME));
-        DriverManager.getDriver().get("https://automationexercise.com/login");
+        DriverManager.getDriver().get("https://automationexercise.com");
     }
 
     @After
