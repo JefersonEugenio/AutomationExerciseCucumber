@@ -112,7 +112,7 @@ public class CadastrarAutomationExercise {
 
     @Então("o usuario clica no botao Create Account")
     public void oUsuarioClicaNoBotaoCreateAccount() {
-        driver.findElement(By.xpath("//input[@name='form_type']/following-sibling::button")).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div/div/div/div[1]/form/button")).click();
         extentTest.log(Status.INFO, "O usuario clicou no botão 'Create Account'");
     }
 }
