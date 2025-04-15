@@ -9,7 +9,6 @@ Funcionalidade: Cadastrar no sistema Automation Exercise
     E que o usuario esta na pagina de login do sistema Automation Exercise
     Quando o usuario preenche o campo nome com "Jeferson"
     E localizar a seção New User Signup e o usuario preenche o campo email com aleatório
-    E dormindo
     E o usuario clica no botao signup
     E redireciona para a tela cadastrar
     E o usuario clica no botao de radio Mr.
