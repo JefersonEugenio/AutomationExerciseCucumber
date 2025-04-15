@@ -9,7 +9,7 @@ Funcionalidade: Fluxo de compra
     Quando o usuario preenche o campo email com "jeferson@teste.com"
     E o usuario preenche o campo password com "1234567890"
     E o usuario clica no botao login
-    E o sistema autentica o usuario e redireciona para a tela principal
+    Então o sistema autentica o usuario e redireciona para a tela principal
     E o usuario escolhe o produto "Blue Top" e clica no botao Add to cart
     E Clica no link View Cart
     E Clica no botão Proceed To Checkout
