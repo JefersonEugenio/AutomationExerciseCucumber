@@ -7,7 +7,7 @@ Funcionalidade: Fluxo de compra
     Dado que o usuario esta na pagina de principal do sistema Automation Exercise
     E o usuario clica aba Login
     Quando o usuario preenche o campo email com "jeferson@teste.com"
-    E o usuario preenche o campo password com "1234567890"
+    E o usuario preenche o campo password com "1q2w3e4r5t6y7u8i9o0p"
     E o usuario clica no botao login
     Então o sistema autentica o usuario e redireciona para a tela principal
     E o usuario escolhe o produto "Blue Top" e clica no botao Add to cart
