@@ -6,9 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/cadastrar",
+        features = "src/test/resources/features/fluxo",
         glue = {"framework.supports", "steps"},
-        name = "Cadastras com validas",
         plugin = {"pretty", "html:target/HtmlReports.html"}
 )
 public class AutomationExerciseRunTest {
