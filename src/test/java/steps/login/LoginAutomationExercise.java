@@ -34,8 +34,15 @@ public class LoginAutomationExercise {
         extentTest.log(Status.INFO, "O usuario preencheu o campo email");
     }
 
+    @E("localizar a seção New User Signup e o usuario preenche o campo email com {string}")
+    public void localizarASeçãoNewUserSignupEOUsuarioPreencheOCampoEmailCom(String valor) {
+        List<WebElement> emails = driver.findElements(By.cssSelector("#form .container .row input[name=email]"));
+        emails.get(1).sendKeys(valor);
+        extentTest.log(Status.INFO, "O usuario preencheu o campo email");
+    }
+
     @E("localizar a seção New User Signup e o usuario preenche o campo email com aleatório")
-    public void localizarASeçãoNewUserSignupEOUsuarioPreencheOCampoEmailCom() {
+    public void localizarASeçãoNewUserSignupEOUsuarioPreencheOCampoEmailComAleatório() {
         List<WebElement> emails = driver.findElements(By.cssSelector("#form .container .row input[name=email]"));
         emails.get(1).sendKeys(fakers.getEmail());
         extentTest.log(Status.INFO, "O usuario preencheu o campo email");
