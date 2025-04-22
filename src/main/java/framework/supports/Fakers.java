@@ -7,7 +7,7 @@ import java.util.Locale;
 public class Fakers {
 
     private Faker faker = new Faker(new Locale("pt-BR"));
-    private String nome, sobrenome, email, postalCode;
+    private String nome, sobrenome, email, postalCode, subject, messagem;
 
     public String getNome() {
         return nome = faker.name().firstName();
@@ -22,5 +22,9 @@ public class Fakers {
     public String getPostalCode() {
         return postalCode = faker.address().zipCode();
     }
+
+    public String getSubject() { return subject = faker.book().title(); }
+
+    public String getMessage() { return messagem = faker.lorem().paragraph(); }
 
 }
