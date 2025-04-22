@@ -73,6 +73,13 @@ git clone https://github.com/JefersonEugenio/AutomationExerciseCucumber.git
 cd AutomationExerciseCucumber
 Executar via terminal: "mvn test"
 ```
+O comando ``mvn test`` é padrão para executar o fluxo de testes, mas é possível especificar uma classe de teste específica.
+| Nome de classe | Comando | Descrição |
+| :------- | :---- | :---------- |
+| CadastrarRunner | ``mvn test -Dtest=CadastrarRunner`` | Executa o fluxo de cadastro no sistema Automation Exercise |
+| LoginRunner | ``mvn test -Dtest=LoginRunner`` | Executa testes de login (válido e inválido) |
+| ContatoRunner | ``mvn test -Dtest=ContatoRunner`` | Preenche os campos do formulário de contato |
+
 2. **Executar via IDE(Intellij)**
 * Abra o projeto na IDE.
 * Acesse o caminho ``src/test/java/runner/AutomationExerciseRunTest.``
