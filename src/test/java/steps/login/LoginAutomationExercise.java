@@ -50,7 +50,7 @@ public class LoginAutomationExercise {
 
     @E("redireciona para a tela principal")
     public void redirecionaParaATelaPrincipal() throws IllegalAccessException {
-        extentTest.log(Status.INFO, "Está acessando a tela de principal", Screenshot.screenshotBase64(driver));
+        extentTest.log(Status.INFO, "Está a tela de principal", Screenshot.screenshotBase64(driver));
     }
 
     @Quando("o usuario não preenche o campo email")
