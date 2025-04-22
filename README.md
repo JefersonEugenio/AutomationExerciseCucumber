@@ -81,6 +81,15 @@ Executar via terminal: "mvn test"
 🏷️ **Execução com Tags ou Cenários Específicos:**
 Você pode filtrar os testes usando @tags ou o nome exato do cenário.
 
+| Tipos | Valor | Descrição |
+| :------- | :---- | :---------- |
+| Caminho (Features) | ``"src/test/resources/features/login"`` | Pode alterar o nome do caminho (ex:fluxo,cadastrar,login e contato) |
+| Nome (Name) | ``"Login com validas"`` | Pode alterar o nome do cenário (executa apenas o cenário com esse nome) |
+| Tag (Tags) | ``"@validas"`` | Pode alterar o nome da tag (executa apenas usando essa tag)|
+
+> [!NOTE]
+> O caminho o *feature* deve estar relacionado ao **nome** ou à **tag**.
+
 **Exemplo:**
 <br>
 <img src="Documentos/Imagem_README/tags.png" alt="Print do app" height="200"/>
